@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technical route for v1.0.0 | Transfer Pilot</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a class="skip" href="#article">Skip to document</a>
+  <header class="site-bar"><div class="doc-bar">
+    <a class="wordmark" href="../index.html#home" aria-label="Transfer Pilot home"><span class="logo-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Transfer Pilot</a>
+    <a class="doc-back" href="../index.html#evidence">Back to evidence</a>
+  </div></header>
+  <main class="doc-layout">
+    <aside class="doc-toc"><nav aria-label="On this page">
+      <h2>On this page</h2>
+      <ul><li><a href="#from-business-evidence-to-implementation">From business evidence to implementation</a></li><li><a href="#runtime-architecture">Runtime architecture</a></li><li><a href="#evidence-and-modelling-decisions">Evidence and modelling decisions</a></li><li><a href="#validation-plan">Validation plan</a></li></ul>
+    </nav></aside>
+    <details class="doc-mobile-toc"><summary>On this page</summary>
+      <nav aria-label="On this page"><ul><li><a href="#from-business-evidence-to-implementation">From business evidence to implementation</a></li><li><a href="#runtime-architecture">Runtime architecture</a></li><li><a href="#evidence-and-modelling-decisions">Evidence and modelling decisions</a></li><li><a href="#validation-plan">Validation plan</a></li></ul></nav>
+    </details>
+    <article id="article" class="doc-article" tabindex="-1"><h1 id="technical-route-for-v1-0-0">Technical route for v1.0.0</h1>
+<p>The design starts with a decision the KTP associate might facilitate. For an existing installation, can a customer agree an outcome it values, can the supplier deliver it at a sustainable price, and what evidence would justify a renewal? A single shared case connects the questions. The English web interface opens directly at a public GitHub Pages address from a phone or a computer.</p>
+<h2 id="from-business-evidence-to-implementation">From business evidence to implementation</h2>
+<div class="doc-table" role="region" aria-labelledby="from-business-evidence-to-implementation" tabindex="0">
+<table aria-labelledby="from-business-evidence-to-implementation">
+<thead>
+<tr>
+<th scope="col">Stage</th>
+<th scope="col">Implementation decision</th>
+<th scope="col">Output a reviewer can inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Establish the business baseline</td>
+<td>Read the supplied Aston specification, UKRI project abstract and public company, customer-project and competitor pages. Preserve a distinction between documented services, vendor-reported outcomes and candidate proposals.</td>
+<td>Company and market review, role crosswalk and primary sources</td>
+</tr>
+<tr>
+<td>Choose a bounded application</td>
+<td>Use one fictional assembly deck already in service. Hold ownership of the asset and ordinary support costs constant.</td>
+<td>Shared case and three workshop priorities</td>
+</tr>
+<tr>
+<td>Discover and co-design</td>
+<td>Translate each role's problem into a requirement, operating handover, metric and acceptance test. A draft note and a reversible service revision capture workshop choices.</td>
+<td>Working service blueprint with its assumptions</td>
+</tr>
+<tr>
+<td>Compare contracts</td>
+<td>Implement one deterministic annual model for the existing arrangement, fixed service and capped performance credits. Use the same calculations for the screen, decision review and text export.</td>
+<td>Both parties' economics, break-even fee interval and sensitivity cases</td>
+</tr>
+<tr>
+<td>Rehearse commercialisation</td>
+<td>Link the decision to a proposed 90-day trial, responsibilities, evidence rules, unit economics and go-to-market plan. Include a research design, teach-back and ownership transfer.</td>
+<td>Go/Hold/Stop review and a handover field guide</td>
+</tr>
+<tr>
+<td>Publish and check</td>
+<td>Serve the repository as static assets from GitHub Pages. Use local paths relative to the project and no runtime dependencies for calculations.</td>
+<td>Versioned public source, test command and shareable review brief</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="runtime-architecture">Runtime architecture</h2>
+<p>The HTML entry point loads ordinary classic scripts in dependency order. No transpiler, database or API is required. Each feature receives a DOM root, the current case and a save callback. Browser code renders the workspace, handles input and extracts text summaries for export. Edit one module, return to another and the same state is available.</p>
+<div class="doc-table" role="region" aria-labelledby="runtime-architecture" tabindex="0">
+<table aria-labelledby="runtime-architecture">
+<thead>
+<tr>
+<th scope="col">File</th>
+<th scope="col">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index.html</code>, <code>styles.css</code> and <code>app.js</code></td>
+<td>Page structure, hash-based navigation, responsive layout, local storage, text download and browser print</td>
+</tr>
+<tr>
+<td><code>discover.js</code></td>
+<td>Defines the three fictional priorities, normalises the selected requirement and updates workshop notes and revisions</td>
+</tr>
+<tr>
+<td><code>model.js</code></td>
+<td>Pure input validation, annual cash flows, risk-sharing credits and sensitivity calculations, available in browsers and Node</td>
+</tr>
+<tr>
+<td><code>commercial.js</code></td>
+<td>Renders numeric inputs, supplies default or edited economics and exposes the same results to the decision and export</td>
+</tr>
+<tr>
+<td><code>programme.js</code></td>
+<td>Explains the field trial and review gates, captures a review decision and provides the decision summary</td>
+</tr>
+<tr>
+<td><code>evidence.js</code> and <code>evidence.css</code></td>
+<td>Expose cited company, competition and job evidence alongside the simulation</td>
+</tr>
+<tr>
+<td><code>discover.css</code>, <code>commercial.css</code>, <code>programme.css</code></td>
+<td>Module layouts, inputs and narrower-screen adaptations</td>
+</tr>
+<tr>
+<td><code>docs/</code> and <code>tests/</code></td>
+<td>Source review, commercial calculations, field protocol, responsibility crosswalk and reproducible regression checks</td>
+</tr>
+<tr>
+<td><code>assets/deck.jpg</code> and <code>tools/render_deck.py</code></td>
+<td>A pre-rendered illustration and its optional NumPy/Pillow reconstruction script; the browser loads the JPEG directly</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The installed-site case contains <code>discover</code>, <code>commercial</code> and <code>programme</code> records. A separate <code>equipment</code> record stores an optional greenfield comparison of buying equipment and paying for supplier-owned equipment as a service. Both parties’ cash flows are discounted over the same term. This calculation is kept separate from the installed-asset renewal decision. Each feature owns its own fields. The commercial model produces derived values from inputs, so switching arrangement cannot leave an obsolete copied fee or margin. Summaries also work before the reviewer visits a module. A recorded decision retains its original basis if the active requirement or pricing is later changed. The text export records the case as it stood at download. Edits persist locally in the browser when storage is available. If local storage is unavailable, the reviewer can still download the in-tab draft.</p>
+<h2 id="evidence-and-modelling-decisions">Evidence and modelling decisions</h2>
+<p><strong>Public evidence.</strong> The sources identify the partner, current offerings, service channels and industrial applications. They support a reason to explore the proposed pilot. Individual company case-study improvements apply to those reported installations. They do not quantify the impact of this proposed contract. <a href="company-and-market.html">Company and market review</a></p>
+<p><strong>Fictional exercise.</strong> The shift lead, maintenance buyer, planner, feedback and attributed events are fictional. The default 48 hours, £225 per hour and 35% estimated recovery are editable as soon as the reviewer opens the model. Estimated effects are independent of the selected workshop priority. In the field, the team would need to demonstrate that a revised handover actually changes attributable lost time. <a href="field-guide.html">Discovery and field protocol</a></p>
+<p><strong>Cash flows.</strong> Annual customer net value compares the service offer with the baseline at one installed site. Supplier contribution deducts attributable delivery cost. A performance credit shifts value between parties, bounded by the contract cap. Finite, in-range inputs are required, and a visit count must be whole. Temporarily invalid edits leave the last valid case in force. <a href="model.html">Equations, scope and downside</a></p>
+<p><strong>Human judgement.</strong> Marked gates indicate what the reviewer elects to assume in this exercise. A positive margin alone cannot justify a real renewal. The trial would require comparable shift records, customer and service-owner agreement, and an explicit explanation of missing or disputed observations. The pilot plan is a candidate proposal, subject to agreement with both partners. <a href="field-guide.html">Field guide</a></p>
+<h2 id="validation-plan">Validation plan</h2>
+<div class="doc-table" role="region" aria-labelledby="validation-plan" tabindex="0">
+<table aria-labelledby="validation-plan">
+<thead>
+<tr>
+<th scope="col">Check</th>
+<th scope="col">What to exercise</th>
+<th scope="col">Passing behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model reconciliation</td>
+<td>Defaults, alternative prices, full or zero credit, matching break-even bounds</td>
+<td>Customer costs and net value reconcile to baseline, credit appears once and both parties' values sum to the available economic benefit</td>
+</tr>
+<tr>
+<td>Adverse operation</td>
+<td>No improvement, worsening downtime, no baseline downtime, no valid price corridor</td>
+<td>Losses, binding caps and missing economic room remain visible</td>
+</tr>
+<tr>
+<td>Inputs</td>
+<td>Blank, negative or unlimited values outside defined bounds, fractional visits</td>
+<td>Invalid edits are identified; calculations retain the last usable assumptions</td>
+</tr>
+<tr>
+<td>Cross-module state</td>
+<td>Adopt a discovery revision, select contract terms, read programme and export summaries</td>
+<td>The requirement, handover, financial figures and decision describe one case</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>Select baseline or a loss-making fee, leave a gate open, write a reason and select Hold</td>
+<td>Go requires all five gates and positive economics for both parties. Hold or Stop can capture a reason when evidence is missing</td>
+</tr>
+<tr>
+<td>Browser interaction</td>
+<td>Navigate all sections at phone and desktop widths, use labels with a keyboard, change an input, return and export</td>
+<td>Controls remain reachable, the case survives navigation, and the brief can be read without access to the browser state</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Open the public project URL as a visitor and request the dependent scripts and styles under the project path</td>
+<td>The application and its relative asset URLs resolve without a GitHub login</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Run the automated checks using <code>node --test tests/*.test.cjs</code>. The browser and deployment rows also require functional checks against the running version. The <a href="../README.md">README</a> gives the local server command and a short review sequence.</p>
+</article>
+  </main>
+  <footer class="doc-footer"><a href="../index.html#evidence">Back to evidence</a></footer>
+</body>
+</html>
